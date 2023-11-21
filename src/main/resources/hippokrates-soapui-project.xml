@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c62d6caa-40d0-4620-97ea-f3a3172c6b44" activeEnvironment="Default" name="hippokrates" resourceRoot="" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="81176681-5100-490b-97d8-1fbe642c661d" wsaVersion="NONE" name="visitReportBinding" type="wsdl" bindingName="{https://kopr.ics.upjs.sk}visitReportBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/Filip/IdeaProjects/wsdl-server/src/main/resources/hippokrates.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\Filip\IdeaProjects\wsdl-server\src\main\resources\hippokrates.wsdl"><con:part><con:url>file:\C:\Users\Filip\IdeaProjects\wsdl-server\src\main\resources\hippokrates.wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="https://kopr.ics.upjs.sk" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:kopr="https://kopr.ics.upjs.sk" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <schema targetNamespace="https://kopr.ics.upjs.sk" xmlns="http://www.w3.org/2001/XMLSchema">
+      <include schemaLocation="hippokrates.xsd"/>
+    </schema>
+  </types>
+  <message name="getVisitReportRequest">
+    <part name="part" element="kopr:search"/>
+  </message>
+  <message name="getVisitReportResponse">
+    <part name="part" element="kopr:report"/>
+  </message>
+  <portType name="visitReportPortType">
+    <operation name="search">
+      <input message="kopr:getVisitReportRequest"/>
+      <output message="kopr:getVisitReportResponse"/>
+    </operation>
+  </portType>
+  <binding name="visitReportBinding" type="kopr:visitReportPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="search">
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="visitReportService">
+    <port name="visitReportPort" binding="kopr:visitReportBinding">
+      <soap:address location="http://localhost:8080/hospital"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\Filip\IdeaProjects\wsdl-server\src\main\resources\hippokrates.xsd</con:url><con:content><![CDATA[<schema targetNamespace="https://kopr.ics.upjs.sk" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="search">
+    <complexType>
+      <sequence>
+        <element name="personId" type="int" minOccurs="1"/>
+        <element name="dateIdentifier" type="string" minOccurs="1"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="report">
+    <complexType>
+      <sequence>
+        <element name="reportText" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/hospital</con:endpoint></con:endpoints><con:operation id="fc747e68-c3b8-4c86-9532-6da07c38001e" isOneWay="false" action="" name="search" bindingOperationName="search" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b39957af-9f72-4d21-9adf-b0cabc6b67df" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/hospital</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:kopr="https://kopr.ics.upjs.sk">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <kopr:search>\r
+         <kopr:personId>?</kopr:personId>\r
+         <kopr:dateIdentifier>?</kopr:dateIdentifier>\r
+      </kopr:search>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://kopr.ics.upjs.sk/visitReportPortType/searchRequest"/></con:call><con:call id="79167764-da5d-407b-b086-d3fd70216e66" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/hospital</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:kopr="https://kopr.ics.upjs.sk">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <kopr:search>\r
+         <kopr:personId>9</kopr:personId>\r
+         <kopr:dateIdentifier>202311210059</kopr:dateIdentifier>\r
+      </kopr:search>
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://kopr.ics.upjs.sk/visitReportPortType/searchRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
